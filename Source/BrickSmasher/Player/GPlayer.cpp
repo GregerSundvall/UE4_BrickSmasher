@@ -50,8 +50,20 @@ void AGPlayer::HandleShootInput()
 {
 	if (!bProjectileIsStillAlive)
 	{
-		AGProjectile->;
+		FTransform SpawnTransform = GetActorTransform();
+		auto Projectile = GetWorld()->SpawnActor(ProjectileClass, &SpawnTransform);
+		auto Casted = Cast<AGProjectile>(Projectile);
+		Casted->Player = this;
+		
 		bProjectileIsStillAlive = true;
+
+		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 2.f, FColor::Magenta, FString::Printf(
+		TEXT("SHOOT")));
 	}
+}
+
+void AGPlayer::EquipProjectile(AGProjectile* NewProjectile)
+{
+	
 }
 

@@ -25,10 +25,14 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComponent;
-
-	UPROPERTY(EditAnywhere, Category ="Object to follow")
-	float FollowSpeed = 5.0f;
-
+	
 	UPROPERTY(EditAnywhere, Category = "Object to follow")
 	AActor* ActorToFollow;
+	
+	UPROPERTY(EditAnywhere, Category ="Object to follow")
+	float FollowSpeed = 5.0f;
+	
+	UPROPERTY(EditAnywhere, Category = "Object to follow")
+	float ZOffset = -300.0f;
+
 };

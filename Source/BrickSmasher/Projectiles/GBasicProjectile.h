@@ -2,29 +2,32 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GProjectile.h"
 #include "Components/SphereComponent.h"
-#include "GameFramework/Actor.h"
-#include "GProjectile.generated.h"
+#include "GBasicProjectile.generated.h"
 
-UCLASS()
-class BRICKSMASHER_API AGBasicProjectile : public AActor
+UCLASS(Abstract)
+class BRICKSMASHER_API AGBasicProjectile : public AGProjectile
 {
 	GENERATED_BODY()
 
 public:
 	AGBasicProjectile();
-
-protected:
 	virtual void BeginPlay() override;
-
-public:
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere)
+	virtual void OnShoot_Implementation() override;
+	
+	UPROPERTY(EditDefaultsOnly)
 	USphereComponent* Collision;
 
+	UPROPERTY(EditDefaultsOnly)
 	FVector ProjectileVelocity;
 
-	// TSubclassOf<AActor>* Other;
+	UPROPERTY(EditDefaultsOnly)
+	FVector SpawnOffset = FVector(0,0,25);
+
+	
+
 	
 };

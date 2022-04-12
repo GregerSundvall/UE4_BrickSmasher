@@ -1,16 +1,28 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
+﻿
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "GProjectile.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class BRICKSMASHER_API UGProjectile : public UObject
+
+UCLASS(Blueprintable)
+class BRICKSMASHER_API AGProjectile : public AActor
 {
 	GENERATED_BODY()
+
+
+public:
+	AGProjectile();
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
+
+	UFUNCTION(BlueprintNativeEvent)
+	void OnShoot();
+	
+	UFUNCTION(BlueprintNativeEvent)
+	void OnHit();
+
+	UPROPERTY()
+	APawn* Player;
+	
 };

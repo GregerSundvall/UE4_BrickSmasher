@@ -26,6 +26,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	void HandleMovePaddleInput(float Value);
 	void HandleShootInput();
+	void EquipProjectile(AGProjectile* NewProjectile);
+	
 	
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
@@ -36,8 +38,10 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UGPaddleMovementComponent* MoveComponent;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AGProjectile> ProjectileClass;
+
 	UPROPERTY()
-	AGProjectile* Projectile;
 	bool bProjectileIsStillAlive = false;
 	
 };
