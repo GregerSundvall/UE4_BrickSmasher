@@ -2,6 +2,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BrickSmasher/Player/GPlayer.h"
 #include "GProjectile.generated.h"
 
 
@@ -22,7 +23,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 	void OnHit();
 
-	UPROPERTY()
-	APawn* Player;
+	UPROPERTY(VisibleAnywhere)
+	AGPlayer* Player;
 	
 };

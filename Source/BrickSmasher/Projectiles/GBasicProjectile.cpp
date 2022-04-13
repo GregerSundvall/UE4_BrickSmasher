@@ -46,7 +46,7 @@ void AGBasicProjectile::Tick(float DeltaTime)
 
 	if (GetActorLocation().Z < -200)
 	{
-		//Player.bProjectileIsStillAlive = false;
+		Player->bProjectileIsStillAlive = false;
 		Destroy();
 	}
 	

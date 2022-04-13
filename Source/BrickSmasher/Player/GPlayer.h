@@ -3,10 +3,12 @@
 
 #include "CoreMinimal.h"
 #include "GPaddleMovementComponent.h"
-#include "BrickSmasher/Projectiles/GProjectile.h"
+// #include "BrickSmasher/Projectiles/GProjectile.h"
 #include "GameFramework/Pawn.h"
 #include "GPlayer.generated.h"
 
+
+class AGProjectile;
 class UGPlayerDataComponent;
 
 UCLASS()

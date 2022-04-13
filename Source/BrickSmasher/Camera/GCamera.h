@@ -31,8 +31,11 @@ public:
 	
 	UPROPERTY(EditAnywhere, Category ="Object to follow")
 	float FollowSpeed = 5.0f;
-	
+
 	UPROPERTY(EditAnywhere, Category = "Object to follow")
-	float ZOffset = -300.0f;
+	FVector Offset = FVector(-650, 0, 300);
+
+	UPROPERTY(EditAnywhere, Category = "Object to follow")
+	FVector YawCenterPoint = FVector(1000, 0, 0);
 
 };

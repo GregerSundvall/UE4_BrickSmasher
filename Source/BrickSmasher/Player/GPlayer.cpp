@@ -30,6 +30,15 @@ void AGPlayer::BeginPlay()
 void AGPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	GEngine->AddOnScreenDebugMessage(
+		INDEX_NONE,
+		0.0f,
+		FColor::Emerald,
+		bProjectileIsStillAlive? TEXT("TRUE") : TEXT("FALSE"),
+		true,
+		FVector2D(4.f)
+		);
 }
 
 void AGPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
