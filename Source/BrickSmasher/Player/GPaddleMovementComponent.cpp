@@ -27,8 +27,18 @@ void UGPaddleMovementComponent::TickComponent(float DeltaTime, ELevelTick TickTy
 	// Apply friction
 	PaddleVelocity -= PaddleVelocity * Friction * DeltaTime;
 
-	Owner->AddActorWorldOffset(PaddleVelocity * DeltaTime);
+	// Clamp to max velocity
+	PaddleVelocity.Y = FMath::Clamp(PaddleVelocity.Y, -MaxVelocity, MaxVelocity);
 	
+	
+
+	FHitResult HitResult;
+	Owner->AddActorWorldOffset(PaddleVelocity * DeltaTime, true, &HitResult);
+
+	if (HitResult.bBlockingHit == true)
+	{
+		PaddleVelocity.Y = -PaddleVelocity.Y / 2;
+	}
 }
 
 void UGPaddleMovementComponent::AddForce(const FVector& Force)

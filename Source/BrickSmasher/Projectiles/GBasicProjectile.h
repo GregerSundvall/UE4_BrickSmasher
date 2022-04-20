@@ -18,14 +18,8 @@ public:
 
 	virtual void OnShoot_Implementation() override;
 	
-	UPROPERTY(EditDefaultsOnly)
-	USphereComponent* Collision;
 
-	UPROPERTY(EditDefaultsOnly)
-	FVector ProjectileVelocity;
 
-	UPROPERTY(EditDefaultsOnly)
-	FVector SpawnOffset = FVector(0,0,25);
 
 	
 

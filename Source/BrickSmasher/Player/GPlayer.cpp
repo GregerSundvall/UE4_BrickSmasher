@@ -11,7 +11,7 @@ AGPlayer::AGPlayer()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	Root = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collision"));
 	RootComponent = Root;
 
 	PlayerDataComponent = CreateDefaultSubobject<UGPlayerDataComponent>(TEXT("Data"));
@@ -31,14 +31,6 @@ void AGPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	GEngine->AddOnScreenDebugMessage(
-		INDEX_NONE,
-		0.0f,
-		FColor::Emerald,
-		bProjectileIsStillAlive? TEXT("TRUE") : TEXT("FALSE"),
-		true,
-		FVector2D(4.f)
-		);
 }
 
 void AGPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -57,22 +49,51 @@ void AGPlayer::HandleMovePaddleInput(float Value)
 
 void AGPlayer::HandleShootInput()
 {
-	if (!bProjectileIsStillAlive)
+	if (!bProjectileIsStillAlive && ProjectilesLeft > 0)
 	{
 		FTransform SpawnTransform = GetActorTransform();
 		auto Projectile = GetWorld()->SpawnActor(ProjectileClass, &SpawnTransform);
 		auto Casted = Cast<AGProjectile>(Projectile);
-		Casted->Player = this;
-		
+		Casted->Init(this);
+
+		ProjectilesLeft--;
 		bProjectileIsStillAlive = true;
 
-		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 2.f, FColor::Magenta, FString::Printf(
-		TEXT("SHOOT")));
 	}
 }
+
+void AGPlayer::OnProjectileDead()
+{
+	bProjectileIsStillAlive = false;
+
+	if (ProjectilesLeft == 0)
+	{
+		GEngine->AddOnScreenDebugMessage(
+		INDEX_NONE,
+		2.0f,
+		FColor::Emerald,
+		TEXT("GAME OVER"),
+		true,
+		FVector2D(4.f)
+		);
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(
+		INDEX_NONE,
+		2.0f,
+		FColor::Emerald,
+		FString::Printf(TEXT("%i Projectiles Left"), ProjectilesLeft),
+		true,
+		FVector2D(4.f)
+		);
+	}
+}
+
 
 void AGPlayer::EquipProjectile(AGProjectile* NewProjectile)
 {
 	
 }
+
 

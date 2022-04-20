@@ -3,7 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "GPaddleMovementComponent.h"
-// #include "BrickSmasher/Projectiles/GProjectile.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/Pawn.h"
 #include "GPlayer.generated.h"
 
@@ -11,7 +11,7 @@
 class AGProjectile;
 class UGPlayerDataComponent;
 
-UCLASS()
+UCLASS(Blueprintable)
 class BRICKSMASHER_API AGPlayer : public APawn
 {
 	GENERATED_BODY()
@@ -29,10 +29,11 @@ public:
 	void HandleMovePaddleInput(float Value);
 	void HandleShootInput();
 	void EquipProjectile(AGProjectile* NewProjectile);
+	void OnProjectileDead();
 	
 	
-	UPROPERTY(VisibleAnywhere)
-	USceneComponent* Root;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBoxComponent* Root;
 
 	UPROPERTY(VisibleAnywhere)
 	UGPlayerDataComponent* PlayerDataComponent;
@@ -45,5 +46,8 @@ public:
 
 	UPROPERTY()
 	bool bProjectileIsStillAlive = false;
+
+	UPROPERTY(EditAnywhere)
+	int ProjectilesLeft = 3;
 	
 };

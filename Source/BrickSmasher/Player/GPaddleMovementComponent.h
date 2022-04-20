@@ -33,5 +33,8 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	FVector PaddleVelocity = FVector::ZeroVector;
 
+	UPROPERTY(EditAnywhere)
+	float MaxVelocity = 800;
+
 	float GoRightInput = 0.0f;
 };

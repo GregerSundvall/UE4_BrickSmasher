@@ -6,6 +6,7 @@
 #include "GProjectile.generated.h"
 
 
+class USphereComponent;
 UCLASS(Blueprintable)
 class BRICKSMASHER_API AGProjectile : public AActor
 {
@@ -14,6 +15,7 @@ class BRICKSMASHER_API AGProjectile : public AActor
 
 public:
 	AGProjectile();
+	void Init(AGPlayer* Shooter);
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
@@ -23,7 +25,26 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 	void OnHit();
 
+
+	UPROPERTY(EditAnywhere)
+	FVector StartVelocity = FVector(0,0,300.f);
+
+	UPROPERTY(EditAnywhere)
+	float CurrentMaxVelocity;
+	
+	UPROPERTY(EditDefaultsOnly)
+	FVector ProjectileVelocity;
+
+	UPROPERTY(EditDefaultsOnly)
+	float VelocityRampUp = 1.0001f;
+	
 	UPROPERTY(VisibleAnywhere)
 	AGPlayer* Player;
+
+	UPROPERTY(EditDefaultsOnly)
+	USphereComponent* Collision;
+	
+	UPROPERTY(EditDefaultsOnly)
+	FVector SpawnOffset = FVector(0,0,25);
 	
 };
