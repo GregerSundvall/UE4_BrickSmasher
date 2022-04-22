@@ -2,11 +2,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GProjectile.h"
 #include "GameFramework/Actor.h"
 #include "GCrusherProjectile.generated.h"
 
-UCLASS()
-class BRICKSMASHER_API AGCrusherProjectile : public AActor
+UCLASS(Blueprintable)
+class BRICKSMASHER_API AGCrusherProjectile : public AGProjectile
 {
 	GENERATED_BODY()
 

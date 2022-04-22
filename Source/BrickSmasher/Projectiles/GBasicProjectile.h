@@ -3,10 +3,9 @@
 
 #include "CoreMinimal.h"
 #include "GProjectile.h"
-#include "Components/SphereComponent.h"
 #include "GBasicProjectile.generated.h"
 
-UCLASS(Abstract)
+UCLASS(Blueprintable)
 class BRICKSMASHER_API AGBasicProjectile : public AGProjectile
 {
 	GENERATED_BODY()

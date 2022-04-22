@@ -7,7 +7,7 @@
 
 
 class USphereComponent;
-UCLASS(Blueprintable)
+UCLASS(Abstract)
 class BRICKSMASHER_API AGProjectile : public AActor
 {
 	GENERATED_BODY()

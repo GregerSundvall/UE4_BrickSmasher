@@ -41,7 +41,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UGPaddleMovementComponent* MoveComponent;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	TSubclassOf<AGProjectile> ProjectileClass;
 
 	UPROPERTY()
