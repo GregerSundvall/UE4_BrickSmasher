@@ -33,5 +33,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RemoveBrick(AGBrick* Brick);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnAllBricksDestroyed();
 	
 };

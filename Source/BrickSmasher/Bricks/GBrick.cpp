@@ -18,8 +18,6 @@ void AGBrick::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-
-	
 	if (Health == 0)
 	{
 		IAmDead();
@@ -27,16 +25,6 @@ void AGBrick::Tick(float DeltaTime)
 	}
 }
 
-void AGBrick::SetOwnerArray(const TArray<AGBrick*> OwningArray)
-{
-	OwnerArray = OwningArray;
-}
-
-void AGBrick::RemoveFromOwnerArray()
-{
-	OwnerArray.Remove(this);
-	
-}
 
 void AGBrick::SetParentLevel(AGLevel* Level)
 {
@@ -45,6 +33,7 @@ void AGBrick::SetParentLevel(AGLevel* Level)
 
 void AGBrick::IAmDead_Implementation()
 {
+
 	
 }
 

@@ -28,16 +28,6 @@ public:
 	void IAmDead();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<AGBrick*> OwnerArray;
-
-	UFUNCTION(BlueprintCallable)
-	void SetOwnerArray(const TArray<AGBrick*> OwningArray);
-
-	UFUNCTION(BlueprintCallable)
-	void RemoveFromOwnerArray();
-
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AGLevel* ParentLevel;
 	
 	UFUNCTION(BlueprintCallable)

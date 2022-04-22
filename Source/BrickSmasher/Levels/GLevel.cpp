@@ -28,8 +28,12 @@ void AGLevel::AddBrick(AGBrick* Brick)
 void AGLevel::RemoveBrick(AGBrick* Brick)
 {
 	Bricks.Remove(Brick);
-	
+	if (Bricks.Num() == 0 )
+	{
+		OnAllBricksDestroyed();
+	}
 }
+
 
 
 
