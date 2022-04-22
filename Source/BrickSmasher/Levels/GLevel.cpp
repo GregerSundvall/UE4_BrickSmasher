@@ -19,3 +19,23 @@ void AGLevel::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+void AGLevel::AddBrick(AGBrick* Brick)
+{
+	Bricks.Add(Brick);
+}
+
+void AGLevel::RemoveBrick(AGBrick* Brick)
+{
+	Bricks.Remove(Brick);
+	
+}
+
+
+
+
+
+
+
+
+

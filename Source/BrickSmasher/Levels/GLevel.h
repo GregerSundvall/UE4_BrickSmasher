@@ -23,5 +23,15 @@ public:
 	FText LevelName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AGBrick> BrickClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<AGBrick*> Bricks;
+
+	UFUNCTION(BlueprintCallable)
+	void AddBrick(AGBrick* Brick);
+
+	UFUNCTION(BlueprintCallable)
+	void RemoveBrick(AGBrick* Brick);
+	
 };

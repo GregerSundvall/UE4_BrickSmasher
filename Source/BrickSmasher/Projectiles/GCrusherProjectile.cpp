@@ -39,7 +39,7 @@ void AGCrusherProjectile::Tick(float DeltaTime)
 		
 		if (AGBrick* Other = Cast<AGBrick, AActor>(Hit.GetActor()))
 		{
-			Other->Destroy();
+			Other->Health = 0;
 		}
 		else
 		{

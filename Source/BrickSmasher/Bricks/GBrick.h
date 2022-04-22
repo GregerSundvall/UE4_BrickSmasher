@@ -5,6 +5,8 @@
 #include "GameFramework/Actor.h"
 #include "GBrick.generated.h"
 
+
+class AGLevel;
 UCLASS()
 class BRICKSMASHER_API AGBrick : public AActor
 {
@@ -21,5 +23,25 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Health = 1;
+
+	UFUNCTION(BlueprintNativeEvent)
+	void IAmDead();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<AGBrick*> OwnerArray;
+
+	UFUNCTION(BlueprintCallable)
+	void SetOwnerArray(const TArray<AGBrick*> OwningArray);
+
+	UFUNCTION(BlueprintCallable)
+	void RemoveFromOwnerArray();
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	AGLevel* ParentLevel;
+	
+	UFUNCTION(BlueprintCallable)
+	void SetParentLevel(AGLevel* Level);
+	
 
 };
